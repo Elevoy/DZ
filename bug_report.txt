@@ -1,4 +1,4 @@
-Title: The button 'Sign up' is not push after filled form 'Authorization'
+Summury: The button 'Sign up' is not push after filled form 'Authorization'
 
 ID: 123456789
 Severity: high 
