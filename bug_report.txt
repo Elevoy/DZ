@@ -1,0 +1,21 @@
+Summury: The button 'Sign up' is not push after filled form 'Authorization'
+
+ID: 123456789
+Severity: high 
+Priority: high 
+Assigned to: Vadim Ksendzov
+Reported By: Elena Group22
+Reported On: 14.09.2021
+Reason: Defect
+Status: Open
+Environment: Windows 10, Google Chrome 93.0.4577.63
+
+Steps:	1. Go to Htttp://
+	2. Go to the 'Authorization' form
+	3. Fill valid data the 'Authorization' form
+	4. Push the button 'Sign up'
+
+Result:	
+	Actual result: The button 'Sign up' is not push after filled form 'Authorization'
+
+	Expected result: On pushing 'Sign up' button, should be promoted to a success message “New User has been created successfully”.
