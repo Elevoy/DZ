@@ -1,0 +1,153 @@
+Подключится к 
+Host: 159.69.151.133
+Port: 5056
+DB: qa_db_2
+User: user_22_70
+Pass: 123
+
+Подключитесь к своей базе данных
+SQL запросы и скрин диаграммы выгрузить на GitHub
+
+Таблица с базами и пользователями - https://docs.google.com/spreadsheets/d/1cMpfCPcXeVyczGGhxjaM03gDoBp2pC8gx3oAE_SasTs/edit?usp=sharing
+
+ 1. Создайте базу из представленной картинки.
+      - У каждой таблицы должно быть поле id
+      - id автоинкрементальный и является первичным ключом
+ 2. Заполните таблицы данными. Не менее 10 строк в каждой таблице
+ 3. Добавить таблицу Suppliers с полями id, name
+ 4. Добавить 10 строк поставщиков в таблицу Suppliers
+ 5. Обновить таблицу Materials. Добавить поле suplier_id которое связано с полем id в таблице Suppliers
+ 6. Обновить таблицу Employees. Добавить varchar поле surname на 50 символов.
+ 7. Обновить таблицу Salary. Добавить varchar поле currency на 7 символов.
+------------------------------------------------------------------------------------------
+
+create table employees_70 (
+	id serial primary key,
+	employee_name varchar (50)
+);
+insert into employees_70 (id, employee_name, surname)
+values	(default, 'Leo'), (default, 'Max'), (default, 'Elena'), 
+	(default, 'Elena'), (default, 'Anna'), (default, 'Lily'),
+	(default, 'Sofie'),(default, 'Denis'),(default, 'Artur'),
+	(default, 'Artem'),(default, 'Margo');
+
+alter table employees_70
+add surname varchar(50);
+
+---------------------------------------------------------------;
+
+create table roles_70 (
+	id serial primary key,
+	role_title varchar (50)
+);
+
+insert into roles_70 (id, role_name)
+values (default, 'mechanic'), (default, 'engineer');
+
+---------------------------------------------------------------;
+
+create table salary_70 (
+	id serial primary key,
+	mounthly_salary int
+);
+
+insert into salary_70 (id, mounthly_salary)
+values (1, 1050), (2, 1000);
+
+alter table salary_70 
+add currency varchar(7);
+---------------------------------------------------------------;
+
+create table roles_salary_70 (
+	id serial primary key,
+	id_role int,
+	id_salary int,
+	foreign key (id_role)
+	references roles_1(id),
+	foreign key (id_salary)
+	references salary_70 (id)
+);
+
+---------------------------------------------------------------;
+
+create table claim_70 (
+	id serial primary key,
+	claim_date date,
+	material_id int,
+	service_id int,
+	employee_id int,
+	sales_manager int,
+	foreign key (material_id)
+	references materials_70(id),
+	foreign key (service_id)
+	references service_70 (id),
+	foreign key (employee_id)
+	references employees_1 (id),
+	foreign key (sales_manager) 
+	references employees_1 (id)
+);
+insert into claim_70 (id, claim_date, material_id, service_id, employee_id, sales_manager)
+values (default, default, '4', '6', '9', '1'), (default, '2021-08-06', '3', '7', '8', '1'),
+(default, '2021-03-20', '8', '2', '7', '1'),(default, '2021-08-06', '3', '7', '8', '1'),
+(default, '2020-08-06', '1', '7', '8', '1'),(default, '2021-08-06', '3', '7', '8', '1'),
+(default, '2021-01-12', '3', '6', '4', '2'),(default, '2021-08-06', '3', '7', '8', '1'),
+(default, '2021-10-06', '9', '3', '8', '2'),(default, '2021-08-06', '3', '7', '8', '1');
+---------------------------------------------------------------;
+
+create table service_70 (
+	id serial primary key,
+	service_title varchar(50),
+	price int
+);
+insert into service_70 (id, service_title, price)
+values	(default, 'oil change', '15'), (default, 'wash', '10'), (default, 'engine_overhaul', '1500'),
+	(default, 'gearbox_repair', '1100'),(default, 'interior_cleaning', '35'),
+	(default, 'alarm_setting', '35'), (default, 'paperwork', '10'),
+	(default, 'injector_cleaning', '110'),(default, 'battery_charging', '10'),
+	(default, 'diagnosis', '350');
+
+---------------------------------------------------------------;
+
+create table employees_role_70 (
+	id serial primary key,
+	id_role int,
+	id_employee int,
+	foreign key (id_role)
+	references roles_1(id),
+	foreign key (id_employee)
+	references employees_1(id)
+);
+
+---------------------------------------------------------------;
+
+create table material_70 (
+	id serial primary key,
+	material_title varchar(50),
+	amount int,
+	price int
+);
+
+insert into material_70 (id, material_title, amount, price)
+values	(default, 'glass', '12', '120'), (default, 'mirror', '6', '60'),
+	(default, 'door', '7', '500');
+
+alter table materials_70 
+	add suplier_id int,
+	add foreign key (suplier_id) 
+	references suppliers_70 (id);
+
+update materials_70 set suplier_id =5 where id =4;
+
+---------------------------------------------------------------;
+
+create table Suppliers_70 (
+	id serial primary key,
+	name varchar(50)
+);
+ 
+insert into Suppliers_70 (id, name)
+values	(default, 'MIR'), (default, 'avrora'), (default, 'Volvo'),
+	(default, 'Volvo'), (default, 'Toyota'), (default, 'Nissan'),
+	(default, 'Mercedes'), (default, 'Tesla'), (default, 'Skoda'), (default, 'Honda');
+
+
