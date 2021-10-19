@@ -82,9 +82,9 @@ create table claim_70 (
 	foreign key (service_id)
 	references service_70 (id),
 	foreign key (employee_id)
-	references employees_1 (id),
+	references employees_70 (id),
 	foreign key (sales_manager) 
-	references employees_1 (id)
+	references employees_70 (id)
 );
 insert into claim_70 (id, claim_date, material_id, service_id, employee_id, sales_manager)
 values (default, default, '4', '6', '9', '1'), (default, '2021-08-06', '3', '7', '8', '1'),
@@ -113,9 +113,9 @@ create table employees_role_70 (
 	id_role int,
 	id_employee int,
 	foreign key (id_role)
-	references roles_1(id),
+	references roles_70(id),
 	foreign key (id_employee)
-	references employees_1(id)
+	references employees_70(id)
 );
 
 ---------------------------------------------------------------;
