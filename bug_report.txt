@@ -1,7 +1,7 @@
 Summury: The button 'Sign up' is not push after filled form 'Authorization'
 
 ID: 123456789
-Severity: high 
+Severity: critical 
 Priority: high 
 Assigned to: Vadim Ksendzov
 Reported By: Elena Group22
